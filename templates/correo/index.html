@@ -1,0 +1,14 @@
+{% extends "correo/base.html" %}
+{% block content %}
+    {% if datos %}
+	<textarea readonly="readonly" class="copy-content" style="height: 180px;">{{ dato }}</textarea>
+    {% else %}
+        <form action="/" method="post">
+	    <div clas="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-lg btn-default" type="submit" value="Decrypt" />
+	    </div>
+        </form>
+    {% endif %}
+{% endblock %}

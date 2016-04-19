@@ -1,0 +1,15 @@
+{% extends "correo/base.html" %}
+{% block content %}
+    {% if datos %}
+    <h3>the Next text is you message encrypted</h3>
+	<textarea readonly="readonly" class="copy-content" style="height: 180px;">{{ dato }}</textarea>
+    {% else %}
+        <form action="/correo/" method="post">
+	    <div clas="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-lg btn-default" type="submit" value="Encrypt" />
+	    </div>
+        </form>
+    {% endif %}
+{% endblock %}
